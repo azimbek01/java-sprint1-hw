@@ -1,9 +1,5 @@
 public class DataReconciliation {
 
-    DataReconciliation() {
-
-    }
-
     void reconciliationMonthYearReport(MonthlyReport monthlyReport, YearReport yearReport) {
         String month = "";
         int sumExpenseMonth = 0;

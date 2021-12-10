@@ -7,7 +7,6 @@ public class YearReport {
     int profitMarch= 0;
     int averageIncome = 0;
     int averageExpense = 0;
-
     ArrayList<YearRow> contentsRows = new ArrayList<>();
 
     void addYearRow(YearRow yearRow) {
@@ -15,7 +14,6 @@ public class YearReport {
     }
 
     void getProfit() {
-
         for (YearRow row : contentsRows) {
             if (row.month == 1) {
                 if (row.is_expense) {

@@ -3,7 +3,6 @@ public class YearRow {
     int amount;
     boolean is_expense;
 
-
     YearRow(String[] lines){
         month = Integer.parseInt(lines[0]);
         amount = Integer.parseInt(lines[1]);
