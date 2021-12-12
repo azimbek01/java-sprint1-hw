@@ -5,28 +5,49 @@ public class ReportManager {
     YearReport reportYear = new YearReport();
 
     void readMonthReport() {
-        String path_one = "E:\\dev\\java-sprint1-hw\\resources\\m.202101.csv";
-        String path_two = "E:\\dev\\java-sprint1-hw\\resources\\m.202102.csv";
-        String path_three = "E:\\dev\\java-sprint1-hw\\resources\\m.202103.csv";
+        String path_one = "./resources/m.202101.csv";
+        String path_two = "./resources/m.202102.csv";
+        String path_three = "./resources/m.202103.csv";
         ReportLoader loader = new ReportLoader();
         ReportBuilderMonth builder = new ReportBuilderMonth();
-
         String[] fileData = loader.readFile(path_one);
-        reportJanuary = builder.buildReport(fileData, "Январь");
+        if(fileData == null) {
+            System.out.println("Невозможно обработать файл месячной отчетности за январь. "
+                                + "Возможно, не удалось прочитать файл с месячным отчётом");
+        } else {
+            reportJanuary = builder.buildReport(fileData, "Январь");
+            System.out.println("Данные отчета за январь считаны.");
+        }
         String[] fileData_two = loader.readFile(path_two);
-        reportFebruary = builder.buildReport(fileData_two, "Февраль");
+        if (fileData_two == null) {
+            System.out.println("Невозможно обработать файл месячной отчетности за февраль. "
+                    + "Возможно, не удалось прочитать файл с месячным отчётом");
+        } else {
+            reportFebruary = builder.buildReport(fileData_two, "Февраль");
+            System.out.println("Данные отчета за февраль считаны.");
+        }
         String[] fileData_three = loader.readFile(path_three);
-        reportMarch = builder.buildReport(fileData_three, "Март");
-        System.out.println("Данные месячных отчетов считаны");
+        if (fileData_three == null) {
+            System.out.println("Невозможно обработать файл месячной отчетности за март. "
+                    + "Возможно, не удалось прочитать файл с месячным отчётом");
+        } else {
+            reportMarch = builder.buildReport(fileData_three, "Март");
+            System.out.println("Данные отчета за март считаны.");
+        }
     }
 
     void readYearReport() {
         ReportLoader loader = new ReportLoader();
         ReportBuilderYear reportBuilder = new ReportBuilderYear();
-        String path = "E:\\dev\\java-sprint1-hw\\resources\\y.2021.csv";
+        String path = "./resources/y.2021.csv";
         String[] fileData = loader.readFile(path);
-        reportYear = reportBuilder.buildReport(fileData);
-        System.out.println("Данные годового отчета считаны");
+        if (fileData == null) {
+            System.out.println("Невозможно обработать файл годовой отчетности. "
+                    + "Возможно, не удалось прочитать файл с годовым отчётом");
+        } else {
+            reportYear = reportBuilder.buildReport(fileData);
+            System.out.println("Данные годового отчета считаны");
+        }
     }
 
     void dataReconciliation() {

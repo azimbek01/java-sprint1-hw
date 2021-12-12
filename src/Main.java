@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -8,30 +10,30 @@ public class Main {
         ReportManager reportManager = new ReportManager();
         while (true) {
             printMenu();
-            int command = scanner.nextInt();
+            String command = scanner.next();
             switch (command) {
-                case 1:
+                case "1":
                     reportManager.readMonthReport();
                     break;
-                case 2:
+                case "2":
                     reportManager.readYearReport();
                     break;
-                case 3:
+                case "3":
                     reportManager.dataReconciliation();
                     break;
-                case 4:
+                case "4":
                     reportManager.printMonthReport();
                     break;
-                case 5:
+                case "5":
                     reportManager.printYearReport();
                     break;
-                case 0:
+                case "0":
                     System.out.println("Выход из программы");
                     break;
                 default:
                     System.out.println("Извините, такой команды пока нет.");
             }
-            if (command == 0) {
+            if (command.equals("0")) {
                 break;
             }
         }
